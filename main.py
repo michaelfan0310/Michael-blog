@@ -1,4 +1,6 @@
-from flask import Flask, render_template, redirect, url_for, flash, abort
+from flask import Flask, render_template, redirect, url_for, flash, abort,request
+import smtplib
+import requests
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -10,6 +12,9 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 
+posts = requests.get("https://api.npoint.io/0067e63917ca7a5034d9").json()
+OWN_EMAIL = "marshallfan0310@gmail.com"
+OWN_PASSWORD = "r%s6d2ZAQZ(vy(g"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
